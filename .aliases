@@ -1,0 +1,9 @@
+alias vssh="~/Homestead && vagrant ssh"
+alias vup="~/Code/Homestead && vagrant up"
+alias vsus="~/Code/Homestead && vagrant suspend"
+alias ll='ls -lh'
+alias dev='~/Code/dev'
+alias glow='cd ~/Code/dev/the-glow-site'
+alias glow-serve='Code/dev/the-glow-site/api-server && nodemon --exec babel-node server'
+alias popt='~/Code/dev/popeye/wp-content/themes/popeye_theme_dev'
+alias popssh='~/Code && ssh -i popeye.pem ec2-user@54.208.119.247'
