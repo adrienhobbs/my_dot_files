@@ -31,12 +31,13 @@ set wildignore+=*/node_modules/**
 
 " Theming Stuff
 " colorscheme Tomorrow-Night-Eighties
-"colorscheme solarized
+colorscheme solarized
 
 " Press F4 to toggle highlighting on/off, and show current value.
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 highlight Search cterm=underline
 
+set rtp+=/usr/local/opt/fzf
 " set the runtime path to include Vundle and initialize
 execute pathogen#infect()
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -51,13 +52,14 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-eunuch'
 Plugin 'https://github.com/godlygeek/tabular.git'
 
+Plugin 'https://github.com/junegunn/fzf.vim.git'
 " Git Tools
 Plugin 'tpope/vim-fugitive'
 
 " File & Window Management Plugins
 Plugin 'szw/vim-ctrlspace'
 Plugin 'https://github.com/rking/ag.vim.git'
-Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'https://github.com/majutsushi/tagbar.git'
 
 Plugin 'https://github.com/scrooloose/nerdtree.git'
@@ -70,8 +72,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " HTML Code Expansion <C-E> and <C-n>
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 Plugin 'othree/html5.vim'
+Plugin 'w0rp/ale'
 
 " Snippets Plugin
 Plugin 'SirVer/ultisnips'
@@ -81,7 +84,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'https://github.com/ervandew/supertab.git'
 
 " Syntax and Code-Style Plugins
-Plugin 'https://github.com/scrooloose/syntastic.git'
+" Plugin 'https://github.com/scrooloose/syntastic.git'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'mxw/vim-jsx'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -95,6 +98,18 @@ Plugin 'https://github.com/xolox/vim-easytags.git'
 Plugin 'https://github.com/xolox/vim-misc.git'
 " Automatic Closing of quotes, parenths, brackets.
 Plugin 'Raimondi/delimitMate'
+
+" Put this in vimrc or a plugin file of your own.
+" " After this is configured, :ALEFix will try and fix your JS code with
+" ESLint.
+ let g:ale_fixers = {
+ \   'javascript': ['eslint'],
+ \   'jsx': ['stylelint']
+ \}
+
+" " Set this setting in vimrc if you want to fix files automatically on save.
+" " This is off by default.
+ let g:ale_fix_on_save = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -129,7 +144,9 @@ let g:airline_theme='tomorrow'
 imap jj <esc>
 let mapleader = ','
 nmap <F8> :TagbarToggle<CR>
-"
+map <Leader>c :%s/class=/className=/g<CR>
+map <Leader>s} :V/}<CR>
+
 " Fast saves
 nmap <leader>w :w!<cr>
 map <Leader>k <Plug>(easymotion-k)
@@ -146,10 +163,14 @@ nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
 " Familiar commands for file/symbol browsing
-map <D-p> :CtrlP<cr>
-map <C-r> :CtrlPBufTag<cr>
-map <Leader>t :CommandT<cr>
-map <F1> :CommandT<cr>
+"map <D-p> :CtrlP<cr>
+"map <C-r> :CtrlPBufTag<cr>
+"map <Leader>t :CommandT<cr>
+"map <F1> :CommandT<cr>
+
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
 
 " Powerline Stuff
 
@@ -179,19 +200,19 @@ let g:used_javascript_libs = 'underscore,backbone,react,lodash'
 
 let g:EasyMotion_leader_key = '<Leader>'
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_jsx_checkers = ['eslint']
-let g:syntastic_js_checkers = ['eslint']
-let g:syntastic_css_checkers = ['stylelint']
-let g:syntastic_scss_checkers = ['stylelint']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open=1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_jsx_checkers = ['eslint']
+" let g:syntastic_js_checkers = ['eslint']
+" let g:syntastic_css_checkers = ['stylelint']
+" let g:syntastic_scss_checkers = ['stylelint']
 let g:indent_guides_auto_colors = 1
 
 " CTRL SPACE STUFF
@@ -210,9 +231,15 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 0
   \}
 
 " Command T Settings
-let g:CommandTInputDebounce = 200
-let g:CommandTFileScanner = "watchman"
-let g:CommandTWildIgnore = &wildignore . ",**/bower_components/*" . ",**/node_modules/*" . ",**/vendor/*"
-let g:CommandTMaxHeight = 40
-let g:CommandTMaxFiles = 500000
+"let g:CommandTInputDebounce = 200
+"let g:CommandTFileScanner = "watchman"
+"let g:CommandTWildIgnore = &wildignore . ",**/bower_components/*" . ",**/node_modules/*" . ",**/vendor/*"
+"let g:CommandTMaxHeight = 40
+"let g:CommandTMaxFiles = 500000
 " aws s3 cp casual-gallery.jpg s3://weareglow-assets --profile glow_s3
+"
+let g:user_emmet_settings = {
+      \  'javascript' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}

@@ -8,3 +8,5 @@ alias glow-serve='Code/dev/the-glow-site/api-server && nodemon --exec babel-node
 alias popt='~/Code/dev/popeye/wp-content/themes/popeye_theme_dev'
 alias popssh='~/Code && ssh -i popeye.pem ec2-user@54.208.119.247'
 alias mos='/Users/adrienhobbs/.mos/bin/mos'
+alias glowtheme='~/Code/dev/weareglow-2017/wp-content/themes/GLOW'
+alias glowcreds='vi ~/Code/dev/weareglow-2017/wp-config-glow-creds.php'
