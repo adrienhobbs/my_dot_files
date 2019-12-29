@@ -30,8 +30,8 @@ filetype off
 set wildignore+=*/node_modules/**
 
 " Theming Stuff
-" colorscheme Tomorrow-Night-Eighties
-colorscheme solarized
+colorscheme Tomorrow-Night-Eighties
+" colorscheme solarized
 
 " Press F4 to toggle highlighting on/off, and show current value.
 :noremap <F4> :set hlsearch! hlsearch?<CR>
@@ -70,7 +70,7 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " Auto-Completion Plugins
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'} " HTML Code Expansion <C-E> and <C-n>
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'mattn/emmet-vim'
 " Plugin 'marijnh/tern_for_vim'
 Plugin 'othree/html5.vim'
@@ -92,9 +92,16 @@ Plugin 'https://github.com/hail2u/vim-css3-syntax.git'
 Plugin 'pangloss/vim-javascript'
 Plugin 'https://github.com/vim-scripts/SyntaxComplete.git'
 Plugin 'https://github.com/tpope/vim-commentary.git'
+Plugin 'posva/vim-vue'
+Plugin 'https://github.com/sheerun/vim-polyglot.git'
+" Plugin 'prettier/vim-prettier'
+let g:prettier#config#semi = 'false'
+nmap <Leader>py <Plug>(Prettier)
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Tag Plugins
-Plugin 'https://github.com/xolox/vim-easytags.git'
+" Plugin 'https://github.com/xolox/vim-easytags.git'
 Plugin 'https://github.com/xolox/vim-misc.git'
 " Automatic Closing of quotes, parenths, brackets.
 Plugin 'Raimondi/delimitMate'
@@ -115,8 +122,8 @@ Plugin 'Raimondi/delimitMate'
 call vundle#end()            " required
 
 " Code Folding -- Made Available by vim-javascript-syntax
-au FileType javascript call JavaScriptFold()
-au FileType javascript.jsx call JavaScriptFold()
+" au FileType javascript call JavaScriptFold()
+" au FileType javascript.jsx call JavaScriptFold()
 
 " YouCompleteMe and UltiSnips compatibility, with the helper of supertab
 " (via http://stackoverflow.com/a/22253548/1626737)
@@ -138,7 +145,7 @@ autocmd BufNewFile,BufRead *.scss set filetype=scss
 autocmd FileType scss set omnifunc=csscomplete#CompleteCSS
 
 filetype plugin indent on
-let g:airline_theme='tomorrow'    
+" let g:airline_theme='tomorrow'    
 
 "easy escaping to normal mode
 imap jj <esc>
@@ -174,10 +181,10 @@ nmap <Leader>r :Tags<CR>
 
 " Powerline Stuff
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-let g:Powerline_symbols = 'fancy'
+" python from powerline.vim import setup as powerline_setup
+" python powerline_setup()
+" python del powerline_setup
+" let g:Powerline_symbols = 'fancy'
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " " made, these lines close it on movement in insert mode or when leaving
@@ -189,7 +196,7 @@ imap <C-c> <CR><Esc>O
 " NERD TREE TOGGLE STUFF
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
 

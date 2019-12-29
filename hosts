@@ -1,0 +1,26 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+127.0.0.1  glow.app
+127.0.0.1  popeye.live
+255.255.255.255	broadcasthost
+::1             localhost 
+192.168.10.10  glowsite.dev
+192.168.10.10  glow-old.dev
+192.168.10.10  spotify.app
+192.168.10.10  homestead.app
+192.168.10.10 popeye.dev
+192.168.10.10 pop.dev
+192.168.10.10 pagekit.dev
+192.168.10.10 glow.dev
+192.168.10.10 glow2017.dev
+192.168.10.10 heckler.app
+192.168.10.10 heckler2.app
+192.168.1.3 hobbs.drive 
+weareglow-dev-env.us-east-1.elasticbeanstalk.com glowdev.app
+
+209.99.21.30 ca1.vpn.goldenfrog.com #Added by VyprVPN
