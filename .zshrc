@@ -2,10 +2,15 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/adrienhobbs/.oh-my-zsh
 export PATH=~/.npm-global/bin:$PATH
+export PATH=/Users/adrienhobbs/Library/Python/3.7/bin:$PATH
 export PATH=/Users/adrienhobbs/.nvm/versions/node/v8.11.3:$PATH
 export PATH=~/zenbot:$PATH
 export TERM="xterm-256color"
-
+export SPOTIFY_ID="52e4f2e98e4e45faa7a95de1a919e8e4"
+export SPOTIFY_SECRET="5ce57e3115c24201989eaff635b5120c"
+export APCA_API_KEY_ID="PKC5SJ18HDRI2KMOVS6Q"
+export APCA_API_SECRET_KEY="pgkxliF573sQMJ5GXGGkOFYZObTUldXmV5v8QBsx"
+export APCA_API_BASE_URL="https://paper-api.alpaca.markets"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -103,7 +108,7 @@ POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %d.%m.%y}"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colorize brew git-extras httpie history jsontools node sudo web-search zsh-syntax-highlighting)
+plugins=(git colorize brew git-extras httpie history jsontools node sudo web-search)
 
 # User configuration
 
@@ -216,10 +221,10 @@ autoload -Uz _zplugin
 #
 #
 zplugin light zdharma/fast-syntax-highlighting
+export PATH=$PATH:/usr/local/go/bin
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/adrienhobbs/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/adrienhobbs/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/adrienhobbs/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/adrienhobbs/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/adrienhobbs/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/adrienhobbs/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-export PATH=$PATH:/usr/local/go/bin
+if [ -f '/Users/adrienhobbs/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/adrienhobbs/google-cloud-sdk/completion.zsh.inc'; fi
